@@ -1,0 +1,31 @@
+<div class="main students-test-result">
+<h4><%= "#{@student.num}. #{@student.family_name} #{@student.first_name}" %></h4>
+<hr>
+  <div class="container">
+    <h3><%= "#{@grade} (#{@year}年度)：成績" %></h3>
+    <table class="table table-bordered text-center">
+      <thead>
+      <tr class="table-info">
+        <th scope="col"></th>
+        <% @subjects.each do |subject| %>
+          <th scope="col"><%= subject %></th>
+        <% end %>
+      </tr>
+      </thead>
+      <tbody>
+        <% @terms.each do |term| %>
+          <tr>
+            <th scope="row"><%= term %></th>
+              <% @subjects.each do |subject| %>
+                <% if @resultsObj[term][subject] !="" %>
+                  <td class="student-score"><%= @resultsObj[term][subject] %></td>
+                  <% else %>
+                  <td class="student-score">-</td>
+                <% end %>
+              <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

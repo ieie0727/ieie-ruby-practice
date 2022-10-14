@@ -1,0 +1,29 @@
+<div class="main student-index">
+  <h3>生徒検索</h3>
+  <form action="/students/search" method="get">
+    <div class="form-group">
+      <label for="num">学籍番号</label>
+      <input type="text" id="num" name="num" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="family_name">名字</label>
+      <input type="text" id="family_name" name="family_name" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="first_name">名前</label>
+      <input type="text" id="first_name" name="first_name" class="form-control">
+    </div>
+    <div class="form-group">
+      <input type="submit" value="検索" class="btn btn-primary">
+    </div>
+  </form>
+  
+  <h3>生徒一覧</h3>
+  <ul class="list-group">
+    <% @students.each do |student| %>
+      <li class="list-group-item list-group-item-action">
+        <%= link_to("#{student.num}. #{student.family_name} #{student.first_name}","/students/#{student.id}") %>
+      </li>
+    <% end %>
+  </ul>
+</div>

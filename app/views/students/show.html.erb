@@ -1,0 +1,26 @@
+<div class="main students-show">
+  <h4><%= "#{@student.num}. #{@student.family_name} #{@student.first_name}" %></h4>
+  <div class="container">
+    <h3>生徒情報</h3>
+    <table class="table table-bordered mt-4">
+      <tr>
+        <td>生徒番号</td><td><%= @student.num %></td>
+      </tr>
+      <tr>
+        <td>名字</td><td><%= @student.family_name %></td>
+      </tr>
+      <tr>
+        <td>名前</td><td><%= @student.first_name %></td>
+      </tr>
+    </table>
+    <div class="form-group">
+      <%= link_to "/students/#{@student.id}/edit" do %>
+        <input type="submit" value="編集" class="btn btn-primary mr-3">
+      <% end %>
+      <%= form_with url:"/students/#{@student.id}/destroy", method:"post" do %>
+        <input type="submit" value="削除" class="btn btn-danger">
+      <% end %>
+      <%= link_to "成績", "/students/#{@student.id}/test/#{@year}" %>
+    </div>
+  </div>
+</div>
